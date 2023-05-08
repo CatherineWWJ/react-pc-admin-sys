@@ -88,4 +88,20 @@ module.exports = {
 
 > chrome三个点 ---> 更多工具 ---> 扩展程序 ---> chrome应用商店：React Developer Tools
 
-# 学习进度：P108
+# 封装http工具模块
+
+> 封装axios：实例化 + 2个拦截器
+
+安装依赖包：
+
+```
+yarn add axios
+```
+
+# mobx登录模块
+
+```
+yarn add mobx mobx-react-lite
+```
+
+# 学习进度：P118
