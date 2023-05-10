@@ -3,6 +3,7 @@
 
 import axios from "axios";
 import { getToken } from "./token";
+import { history } from './history'
 
 const http = axios.create({ // 可以将http看作增强版本的axios
     baseURL: 'http://geek.itheima.net/v1_0',
@@ -28,6 +29,11 @@ http.interceptors.response.use((response) => {
 }, (error) => {
     // 超出 2xx 范围内的状态码都会触发该函数
     // 对响应错误做点什么
+    if (error.response.status === 401) {
+        // 跳回到登录 reactRouter默认状态下 并不支持在组件之外完成路由跳转
+        // 需要自己来实现
+        history.push('/login')
+    }
     return Promise.reject(error)
 })
 

@@ -1,6 +1,6 @@
 // login module
 import { makeAutoObservable } from "mobx"
-import { http,setToken,getToken } from "@/utils"
+import { http,setToken,getToken,removeToken } from "@/utils"
 
 class LoginStore {
     // 刷新之后这里的token就初始化为空了，因此每次刷新页面后要到本地去取token
@@ -19,6 +19,10 @@ class LoginStore {
         this.token = res.data.token
         // 存入localStorage
         setToken(this.token)
+    }
+    loginOut = () => {
+        this.token = ''
+        removeToken()
     }
 }
 

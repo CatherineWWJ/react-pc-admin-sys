@@ -104,4 +104,20 @@ yarn add axios
 yarn add mobx mobx-react-lite
 ```
 
-# 学习进度：P118
+# 处理token失效
+
+> 后端返回一个401的状态码
+
+```
+yarn add history
+```
+
+[在非组件中实现路由跳转](https://github.com/remix-run/react-router/issues/8264)（问题：在**常规**的js文件中使用**use之类**一系列的router的方法都是**失效**的！
+
+# 使用echarts
+
+```
+yarn add echarts
+```
+
+# bug：发布文章左边导航栏高亮变化！
