@@ -113,6 +113,7 @@ import {
         const loadDetail = async () => {
         const res = await http.get(`/mp/articles/${id}`)
         const data = res.data
+        console.log(data);
         // 表单数据回填
         form.setFieldsValue({ ...data, type: data.cover.type })
         // 回填upload
@@ -124,8 +125,18 @@ import {
         setImageCount(data.cover.type)
       }
       // 必须是编辑状态 才可以发送请求
-      if (id) {
+      if (id) { // 编辑状态
         loadDetail()
+      } else { // 放弃编辑跳到发布状态需要把之前的details全部干掉
+        const _data = {
+          title: '', // 标题
+          channel_id: null, // 频道
+          content: '', // 富文本
+        }
+        form.setFieldsValue({ ..._data })
+        setFileList([])
+        cacheImgList.current = []
+        setImageCount(1)
       }
     }, [id, form])
   
@@ -153,7 +164,7 @@ import {
               name="title"
               rules={[{ required: true, message: '请输入文章标题' }]}
             >
-              <Input placeholder="请输入文章标题" style={{ width: 400 }} />
+              <Input placeholder="请输入文章标题" style={{ width: 400 }} defaultValue=""/>
             </Form.Item>
             <Form.Item
               label="频道"

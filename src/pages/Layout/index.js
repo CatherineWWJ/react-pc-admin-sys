@@ -15,8 +15,8 @@ const { Header, Sider } = Layout
 
 const GeekLayout = () => {
   const { pathname } = useLocation() // 获得当前路由
+  console.log(pathname);
   const { userStore, loginStore,channelStore } = useStore()
-
   useEffect(() => {
     userStore.getUserInfo() // 在页面初始化的时候调用一次获取用户信息
     channelStore.loadChannelList()
@@ -56,7 +56,7 @@ const GeekLayout = () => {
             mode="inline"
             theme="dark"
             defaultSelectedKeys={[pathname]} // 设计成数组：多层路由的原因
-            // selectedKeys={pathname}
+            selectedKeys={pathname}
             style={{ height: '100%', borderRight: 0 }}
           >
             <Menu.Item icon={<HomeOutlined />} key="/">
@@ -67,7 +67,7 @@ const GeekLayout = () => {
               <Link to="/article">内容管理</Link>
             </Menu.Item>
             <Menu.Item icon={<EditOutlined />} key="/publish">
-              <Link to='/publish'> 发布文章</Link>
+              <Link to='/publish'>发布文章</Link>
             </Menu.Item>
           </Menu>
         </Sider>
